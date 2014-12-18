@@ -63,9 +63,6 @@ for (link in listoflinks) {
 #Bind the two dataframes resulted from the loop above
 df <- cbind(df,others)
 
-#Reset rownames
-rownames(df) <- NULL
-
 #Name the columns of the output dataframe 
 names(df) <- c('Title','Price','Short.Description','Link','Date','Address','Full.Description')
 
@@ -88,3 +85,9 @@ df[,'Date'] <- as.Date(df[,'Date'],'%d-%b-%y')
 df <- df[,c(1,2,3,6,5,7,4)]
 df <- df[order(df['Price'],df['Date']),]
 
+#Add a new column to replace the text url with a clickable link and then delete the old url column
+df <- transform(df, URL = paste('<a href = ', shQuote(Link), '>', 'Click</a>'))
+df <- df[-7]
+
+#Reset rownames
+rownames(df) <- NULL
