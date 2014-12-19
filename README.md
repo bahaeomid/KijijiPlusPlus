@@ -8,9 +8,8 @@ This app fetches **Kijiji** ads and provides several search fields as a way to e
 
 ###Instructions
 
-* Download/clone the entire app above 
-* Once downloaded the app, open up `server.R` in **RStudio** and change the working directory to your local directory
+* Download/clone the entire app above
 * Modify the web links being scraped by the app in `adscraper.R` file
 
-Please note that **Kijiji++** takes a little while to run at startup.
+Please note that by default **Kijiji++** scrapes 100 pages worth of ads so it takes a little while to run at startup.
 
