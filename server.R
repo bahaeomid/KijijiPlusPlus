@@ -7,7 +7,7 @@ if(length(NewPackages)>0) install.packages(NewPackages)
 lapply(ListofPackages,require,character.only=TRUE)
 
 #Load source code
-source('C:/Users/Bahae.Omid/Google Drive/My R Case Studies/Shiny Apps/Kijiji App/adscraper.R',local=TRUE)
+source('adscraper.R',local=TRUE)
 
 
 shinyServer(function(input,output){
