@@ -3,11 +3,7 @@ packages <- list('XML','httr','stringr')
 lapply(packages, function(x) {if(!(x %in% installed.packages())) install.packages(x) else require(x,character.only = TRUE)})
 
 #Define initial link(s)
-<<<<<<< HEAD
 kijiji <- list("http://www.kijiji.ca/b-calgary/baby-carrier/k0l1700199")
-=======
-kijiji <- list("http://www.kijiji.ca/b-baby-items/calgary/page-1/c253l1700199")
->>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380
 
 #Define a function to generate a full list of links to process later
 links <- function (linklist=kijiji) {
