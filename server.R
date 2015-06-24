@@ -47,7 +47,7 @@ withBootstrap2({
         search()
       })
       }
-    }, option=list(autoWidth=FALSE,pageLength=100,
+    }, escape=FALSE ,option=list(autoWidth=FALSE,pageLength=100,
                    columnDefs = list(list(targets =c(2,5,7) -1, searchable = FALSE),list(sWidth="75px",aTargets = list(4,5))),
                    "dom" = 'T<"clear">lfrtip',
                    "oTableTools" = list(
