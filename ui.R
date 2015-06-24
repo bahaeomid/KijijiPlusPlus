@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 #for backward compatibility (when shiny upgraded to bootstrap 3, old code needs upgrading too)
 withBootstrap2({
   
   shinyUI(fluidPage(
+=======
+shinyUI(fluidPage(
+>>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380
     
     #Display datatable filters on top
     tags$head(tags$style("tfoot {display: table-header-group;}")),        
@@ -21,6 +25,7 @@ withBootstrap2({
     
     #Use the Sidebar layout
     sidebarLayout(
+<<<<<<< HEAD
       sidebarPanel(
         
         #Add fields to search by
@@ -44,3 +49,26 @@ withBootstrap2({
   ))
   
 })
+=======
+        sidebarPanel(
+                        
+             #Add fields to search by
+             h5('Note: Running the app takes a little while to run at startup.'),
+             helpText('Ad Title:'),
+             textInput('t',''),
+             helpText('Description:'),
+             textInput('d',''),
+             helpText('Address:'),
+             textInput('a',''),
+             sliderInput('p','Show Prices up to:',min = 0,max = 5000,step = 50,value = 0),
+             actionButton('action1','Search!')         
+                                                                    
+        ),       
+        
+        mainPanel(
+        dataTableOutput('searchresult')
+        )
+                        
+    )   
+))
+>>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380

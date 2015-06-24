@@ -1,5 +1,9 @@
 #Install required packages
+<<<<<<< HEAD
 ListofPackages= c('shiny','ggplot2','scales','shinybootstrap2')
+=======
+ListofPackages= c('shiny','ggplot2','scales')
+>>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380
 NewPackages= ListofPackages[!(ListofPackages %in% installed.packages()[,'Package'])]
 if(length(NewPackages)>0) install.packages(NewPackages)
 
@@ -9,6 +13,7 @@ lapply(ListofPackages,require,character.only=TRUE)
 #Load source code
 source('adscraper.R',local=TRUE)
 
+<<<<<<< HEAD
 #for backward compatibility (when shiny upgraded to bootstrap 3, old code needs upgrading too)
 withBootstrap2({
   
@@ -37,6 +42,34 @@ withBootstrap2({
       
       #Return the search results
       df[ind,] 
+=======
+
+shinyServer(function(input,output){
+    
+    #Create a reactive function to deal with inputs of the user
+    search <- reactive({
+       
+       #Store the inputs
+       t <- input$t
+       d <- input$d
+       a <- input$a
+       p <- input$p
+       
+       #Search based on the inputs provided by the user
+       ind.t <- if(t=='') NULL else grep(t,df[,'Title'],ignore.case = T)
+       ind.d <- if(d=='') NULL else grep(d,df[,'Full.Description'],ignore.case = T)
+       ind.a <- if(a=='') NULL else grep(a,df[,'Address'],ignore.case = T)
+       ind.p <- which(df[,'Price']<=p)
+       
+       #Store all the indices found above in one list
+       ind.all <- list(ind.t,ind.d,ind.a,ind.p)
+       
+       #Apply the intersect function recursively to ind.all to find the common indices in all the sublists of ind.all
+       ind <- Reduce(intersect,ind.all[!sapply(ind.all,is.null)])
+       
+       #Return the search results
+       df[ind,] 
+>>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380
     })
     
     #Send the searchresult table to ui.R
@@ -54,10 +87,17 @@ withBootstrap2({
                      "sSwfPath" = "//cdnjs.cloudflare.com/ajax/libs/datatables-tabletools/2.1.5/swf/copy_csv_xls.swf",
                      "aButtons" = list("copy","print",list("sExtends" = "csv","sButtonText" = "Export","aButtons" = "csv")))
                    
+<<<<<<< HEAD
     )
     )
     
     
   })
   
+=======
+                  )
+     )
+    
+    
+>>>>>>> e2a5270f6e0b1418af3b7a42f1478aff5e43a380
 })
